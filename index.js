@@ -1,5 +1,5 @@
 var colorFunctions = {
-  toHSL: function (color) {
+  toHSL: function(color) {
     var r = color[0] / 255,
     g = color[1] / 255,
     b = color[2] / 255,
@@ -22,20 +22,20 @@ var colorFunctions = {
     }
     return { h: h * 360, s: s, l: l, a: a };
   },
-  rgb: function (r, g, b) {
+  rgb: function(r, g, b) {
     return this.rgba(r, g, b, 1.0);
   },
-  rgba: function (r, g, b, a) {
+  rgba: function(r, g, b, a) {
     var rgb = [r, g, b].map(function (c) { return number(c); });
     a = number(a);
     if (rgb.some(isNaN) || isNaN(a)) return null;
     rgb.push(a);
     return rgb;
   },
-  hsl: function (h, s, l) {
+  hsl: function(h, s, l) {
     return this.hsla(h, s, l, 1.0);
   },
-  hsla: function (h, s, l, a) {
+  hsla: function(h, s, l, a) {
     h = (number(h) % 360) / 360;
     s = number(s); l = number(l); a = number(a);
     if ([h, s, l, a].some(isNaN)) return null;
@@ -56,68 +56,122 @@ var colorFunctions = {
       else                return m1;
     }
   },
-  hue: function (color) {
+  /*
+   * Get the hue component of a color
+   *
+   * @param {Array} color
+   * @returns {Number} hue
+   */
+  hue: function(color) {
     return Math.round(this.toHSL(color).h);
   },
-  saturation: function (color) {
+  /*
+   * Get the saturation component of a color as a string
+   * representing percentage
+   *
+   * @param {Array} color
+   * @returns {String} saturation
+   */
+  saturation: function(color) {
     return Math.round(this.toHSL(color).s * 100) + '%';
   },
-  lightness: function (color) {
+  /*
+   * Get the lightness component of a color as a string
+   * representing percentage
+   *
+   * @param {Array} color
+   * @returns {String} lightness
+   */
+  lightness: function(color) {
     return Math.round(this.toHSL(color).l * 100) + '%';
   },
-  alpha: function (color) {
+  /*
+   * Get the alpha component of a color
+   *
+   * @param {Array} color
+   * @returns {Number} alpha
+   */
+  alpha: function(color) {
     return this.toHSL(color).a;
   },
-  saturate: function (color, amount) {
+  /*
+   * Saturate a color by a given amount
+   *
+   * @param {Array} color
+   * @param {Number} amount
+   * @returns {Array} color
+   */
+  saturate: function(color, amount) {
     var hsl = this.toHSL(color);
 
     hsl.s += amount / 100;
     hsl.s = clamp(hsl.s);
     return hsla(hsl);
   },
-  desaturate: function (color, amount) {
+  /*
+   * Deaturate a color by a given amount
+   *
+   * @param {Array} color
+   * @param {Number} amount
+   * @returns {Array} color
+   */
+  desaturate: function(color, amount) {
     var hsl = this.toHSL(color);
 
     hsl.s -= amount / 100;
     hsl.s = clamp(hsl.s);
     return hsla(hsl);
   },
-  lighten: function (color, amount) {
+  /*
+   * Lighten a color by a given amount
+   *
+   * @param {Array} color
+   * @param {Number} amount
+   * @returns {Array} color
+   */
+  lighten: function(color, amount) {
     var hsl = this.toHSL(color);
 
     hsl.l += amount / 100;
     hsl.l = clamp(hsl.l);
     return hsla(hsl);
   },
-  darken: function (color, amount) {
+  /*
+   * Darken a color by a given amount
+   *
+   * @param {Array} color
+   * @param {Number} amount
+   * @returns {Array} color
+   */
+  darken: function(color, amount) {
     var hsl = this.toHSL(color);
 
     hsl.l -= amount / 100;
     hsl.l = clamp(hsl.l);
     return hsla(hsl);
   },
-  fadein: function (color, amount) {
+  fadein: function(color, amount) {
     var hsl = this.toHSL(color);
 
     hsl.a += amount / 100;
     hsl.a = clamp(hsl.a);
     return hsla(hsl);
   },
-  fadeout: function (color, amount) {
+  fadeout: function(color, amount) {
     var hsl = this.toHSL(color);
 
     hsl.a -= amount / 100;
     hsl.a = clamp(hsl.a);
     return hsla(hsl);
   },
-  spin: function (color, amount) {
+  spin: function(color, amount) {
     var hsl = this.toHSL(color);
     var hue = (hsl.h + amount) % 360;
 
     hsl.h = hue < 0 ? 360 + hue : hue;
     return hsla(hsl);
   },
-  greyscale: function (color) {
+  greyscale: function(color) {
     return this.desaturate(color, 100);
   }
 };

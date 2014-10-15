@@ -4,7 +4,7 @@
   "description": "simple color operations",
   "main": "index.js",
   "scripts": {
-    "test": "tape test.js"
+    "test": "tape test.js && istanbul cover test.js && coveralls < ./coverage/lcov.info"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/mapbox/color-ops",
   "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.2",
     "tape": "^3.0.0"
   }
 }

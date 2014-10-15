@@ -1,0 +1,29 @@
+{
+  "name": "color-ops",
+  "version": "1.0.0",
+  "description": "simple color operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mapbox/color-ops.git"
+  },
+  "keywords": [
+    "color",
+    "operations",
+    "hue",
+    "shift",
+    "brightness"
+  ],
+  "author": "Tom MacWright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mapbox/color-ops/issues"
+  },
+  "homepage": "https://github.com/mapbox/color-ops",
+  "devDependencies": {
+    "tape": "^3.0.0"
+  }
+}

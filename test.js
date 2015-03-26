@@ -28,30 +28,24 @@ test('hue', function(t) {
 test('lighten', function(t) {
   t.deepEqual(ops.lighten([0, 0, 0, 0], 10), [25.5, 25.5, 25.5, 0]);
   t.deepEqual(ops.lighten([0, 0, 0, 0], 100), [255, 255, 255, 0]);
+  t.deepEqual(ops.lighten([0, 0, 0, 0], -10), [0, 0, 0, 0]);
+  t.deepEqual(ops.lighten([255, 0, 0, 0], -100), [0, 0, 0, 0]);
   t.end();
 });
 
 test('saturate', function(t) {
   t.deepEqual(ops.saturate([0, 0, 0, 0], 10), [0, 0, 0, 0]);
   t.deepEqual(ops.saturate([0, 0, 0, 0], 100), [0, 0, 0 ,0]);
+  t.deepEqual(ops.saturate([100, 10, 10, 1], 10), [105.5, 4.500000000000012, 4.500000000000012, 1]);
+  t.deepEqual(ops.saturate([100, 10, 10, 1], -10), [ 94.49999999999999, 15.500000000000016, 15.500000000000016, 1 ]);
   t.end();
 });
 
-test('greyscale', function(t) {
-  t.deepEqual(ops.greyscale([0, 0, 0, 0], 10), [0, 0, 0, 0]);
-  t.deepEqual(ops.greyscale([0, 0, 0, 0], 100), [0, 0, 0 ,0]);
-  t.end();
-});
-
-test('fadein', function(t) {
-  t.deepEqual(ops.fadein([0, 0, 0, 0], 10), [0, 0, 0, 0.1]);
-  t.deepEqual(ops.fadein([0, 0, 0, 0], 100), [0, 0, 0, 1]);
-  t.end();
-});
-
-test('fadeout', function(t) {
-  t.deepEqual(ops.fadeout([0, 0, 0, 0], 10), [0, 0, 0, 0]);
-  t.deepEqual(ops.fadeout([0, 0, 0, 0], 100), [0, 0, 0, 0]);
+test('fade', function(t) {
+  t.deepEqual(ops.fade([0, 0, 0, 0], 10), [0, 0, 0, 0.1]);
+  t.deepEqual(ops.fade([0, 0, 0, 0], 100), [0, 0, 0, 1]);
+  t.deepEqual(ops.fade([0, 0, 0, 0], -10), [0, 0, 0, 0]);
+  t.deepEqual(ops.fade([0, 0, 0, 0], -100), [0, 0, 0, 0]);
   t.end();
 });
 
@@ -64,18 +58,6 @@ test('rgb', function(t) {
 test('hsl', function(t) {
   t.deepEqual(ops.hsl(0, 0, 0), [0, 0, 0, 1]);
   t.deepEqual(ops.hsl(0, 20, 0), [0, 0, 0, 1]);
-  t.end();
-});
-
-test('darken', function(t) {
-  t.deepEqual(ops.darken([0, 0, 0, 0], 10), [0, 0, 0, 0]);
-  t.deepEqual(ops.darken([255, 0, 0, 0], 100), [0, 0, 0, 0]);
-  t.end();
-});
-
-test('desaturate', function(t) {
-  t.deepEqual(ops.desaturate([0, 0, 0, 0], 10), [0, 0, 0, 0]);
-  t.deepEqual(ops.desaturate([255, 0, 0, 0], 100), [127.5, 127.5, 127.5, 0]);
   t.end();
 });
 

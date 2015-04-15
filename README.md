@@ -137,6 +137,23 @@ Rotate the hue of a color by an amount given in decimal degrees.
 
 **Returns** `Color`, output
 
+
+### `mix(color1, color2, degrees)`
+
+Mix two colors.
+
+### Parameters
+
+| parameter | type   | description |
+| --------- | ------ | ----------- |
+| `color1`  | Color  |             |
+| `color2`  | Color  |             |
+| `degrees` | Number |             |
+
+
+
+**Returns** `Color`, output
+
 ## Installation
 
 Requires [nodejs](http://nodejs.org/).

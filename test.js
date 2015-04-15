@@ -66,3 +66,9 @@ test('spin', function(t) {
   t.deepEqual(ops.spin([255, 0, 0, 0], 10), [255, 42.5, 0, 0]);
   t.end();
 });
+
+test('mix', function(t) {
+  t.deepEqual(ops.mix([0, 0, 0, 1], [255, 255, 255, 1], 50), [127.5, 127.5, 127.5, 1]);
+  t.deepEqual(ops.mix([255, 0, 0, 1], [85, 26, 139, 1], 20), [119, 20.8, 111.2, 1]);
+  t.end();
+});

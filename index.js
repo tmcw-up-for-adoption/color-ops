@@ -148,6 +148,33 @@ var colorFunctions = {
 
     hsl.h = hue < 0 ? 360 + hue : hue;
     return hsla(hsl);
+  },
+  /**
+   * Mix two colors.
+   * @param {Color} color1
+   * @param {Color} color2
+   * @param {Number} degrees
+   * @returns {Color} output
+   */
+  mix: function(color1, color2, amount) {
+    var p = amount / 100.0;
+    var w = p * 2 - 1;
+    var hsl1 = this.toHSL(color1);
+    var hsl2 = this.toHSL(color2);
+    var a = hsl1.a - hsl2.a;
+
+    var w1 = (((w * a == -1) ? w : (w + a) / (1 + w * a)) + 1) / 2.0;
+    var w2 = 1 - w1;
+
+    var rgb = [
+        color1[0] * w1 + color2[0] * w2,
+        color1[1] * w1 + color2[1] * w2,
+        color1[2] * w1 + color2[2] * w2
+    ];
+
+    var alpha = color1[3] * p + color2[3] * (1 - p);
+    rgb[3] = alpha;
+    return rgb;
   }
 };
 

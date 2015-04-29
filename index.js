@@ -56,6 +56,14 @@ var colorFunctions = {
     rgb.push(a);
     return rgb;
   },
+  /**
+   * Given an HSL color as components, return an RGBA array with 100% alpha
+   *
+   * @param {number} h hue
+   * @param {number} s saturation
+   * @param {number} l luminosity
+   * @returns {Array} rgba color
+   */
   hsl: function(h, s, l) {
     return this.hsla(h, s, l, 1.0);
   },

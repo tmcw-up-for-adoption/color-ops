@@ -59,6 +59,43 @@ with numbers if possible, and null otherwise
 **Returns** `Array`, rgba array
 
 
+### `hsl(h, s, l)`
+
+Given an HSL color as components, return an RGBA array with 100% alpha
+
+
+### Parameters
+
+| parameter | type   | description |
+| --------- | ------ | ----------- |
+| `h`       | number | hue         |
+| `s`       | number | saturation  |
+| `l`       | number | luminosity  |
+
+
+
+**Returns** `Array`, rgba color
+
+
+### `hsla(h, s, l, a)`
+
+Given an HSL color as components, return an RGBA array
+
+
+### Parameters
+
+| parameter | type   | description |
+| --------- | ------ | ----------- |
+| `h`       | number | hue         |
+| `s`       | number | saturation  |
+| `l`       | number | luminosity  |
+| `a`       | number | alpha       |
+
+
+
+**Returns** `Array`, rgba color
+
+
 ### `hue(color)`
 
 Get the hue component of a color

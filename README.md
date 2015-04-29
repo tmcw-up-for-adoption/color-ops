@@ -5,6 +5,60 @@
 simple color operations
 
 
+### `toHSL(color)`
+
+Convert a color specified as an RGBA array
+into an HSL object.
+
+
+### Parameters
+
+| parameter | type  | description |
+| --------- | ----- | ----------- |
+| `color`   | Array | rgba color  |
+
+
+
+**Returns** `Object`, hsl representation of that color
+
+
+### `rgb(r, g, b)`
+
+Given an r, g, b color, return a 4-element RGBA array
+
+### Parameters
+
+| parameter | type   | description |
+| --------- | ------ | ----------- |
+| `r`       | number | red         |
+| `g`       | number | green       |
+| `b`       | number | blue        |
+
+
+
+**Returns** `Array`, rgba array
+
+
+### `rgba(r, g, b, a)`
+
+Given an rgba color as number-like objects, return that array
+with numbers if possible, and null otherwise
+
+
+### Parameters
+
+| parameter | type   | description |
+| --------- | ------ | ----------- |
+| `r`       | number | red         |
+| `g`       | number | green       |
+| `b`       | number | blue        |
+| `a`       | number | alpha       |
+
+
+
+**Returns** `Array`, rgba array
+
+
 ### `hue(color)`
 
 Get the hue component of a color

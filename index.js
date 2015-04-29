@@ -1,4 +1,11 @@
 var colorFunctions = {
+  /**
+   * Convert a color specified as an RGBA array
+   * into an HSL object.
+   *
+   * @param {Array} color rgba color
+   * @returns {Object} hsl representation of that color
+   */
   toHSL: function(color) {
     var r = color[0] / 255,
     g = color[1] / 255,
@@ -22,9 +29,26 @@ var colorFunctions = {
     }
     return { h: h * 360, s: s, l: l, a: a };
   },
+  /**
+   * Given an r, g, b color, return a 4-element RGBA array
+   * @param {number} r red
+   * @param {number} g green
+   * @param {number} b blue
+   * @returns {Array} rgba array
+   */
   rgb: function(r, g, b) {
     return this.rgba(r, g, b, 1.0);
   },
+  /**
+   * Given an rgba color as number-like objects, return that array
+   * with numbers if possible, and null otherwise
+   *
+   * @param {number} r red
+   * @param {number} g green
+   * @param {number} b blue
+   * @param {number} a alpha
+   * @returns {Array} rgba array
+   */
   rgba: function(r, g, b, a) {
     var rgb = [r, g, b].map(function (c) { return number(c); });
     a = number(a);
@@ -35,6 +59,15 @@ var colorFunctions = {
   hsl: function(h, s, l) {
     return this.hsla(h, s, l, 1.0);
   },
+  /**
+   * Given an HSL color as components, return an RGBA array
+   *
+   * @param {number} h hue
+   * @param {number} s saturation
+   * @param {number} l luminosity
+   * @param {number} a alpha
+   * @returns {Array} rgba color
+   */
   hsla: function(h, s, l, a) {
     h = (number(h) % 360) / 360;
     s = number(s); l = number(l); a = number(a);
@@ -73,7 +106,7 @@ var colorFunctions = {
    * @returns {String} saturation
    */
   saturation: function(color) {
-    return Math.round(this.toHSL(color).s * 100) + '%';
+    return Math.round(this.toHSL(color).s * 100);
   },
   /**
    * Get the lightness component of a color as a string
@@ -83,7 +116,7 @@ var colorFunctions = {
    * @returns {String} lightness
    */
   lightness: function(color) {
-    return Math.round(this.toHSL(color).l * 100) + '%';
+    return Math.round(this.toHSL(color).l * 100);
   },
   /**
    * Get the alpha component of a color

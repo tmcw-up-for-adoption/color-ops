@@ -1,6 +1,18 @@
 var test = require('tape'),
   ops = require('./');
 
+test('rgb and rgba', function(t) {
+  t.deepEqual(ops.rgb(0, 0, 0), [0, 0, 0, 1]);
+  t.deepEqual(ops.rgb(0, 0, 'foo'), null);
+  t.deepEqual(ops.rgba(0, 0, 'foo', 0), null);
+  t.end();
+});
+
+test('hsla', function(t) {
+  t.deepEqual(ops.hsla(0, 0, 0, 'foo'), null);
+  t.end();
+});
+
 test('alpha', function(t) {
   t.equal(ops.alpha([0, 0, 0, 0]), 0);
   t.equal(ops.alpha([0, 0, 0, 1]), 1);
@@ -8,14 +20,14 @@ test('alpha', function(t) {
 });
 
 test('saturation', function(t) {
-  t.equal(ops.saturation([0, 0, 0, 0]), '0%');
-  t.equal(ops.saturation([0, 0, 0, 1]), '0%');
+  t.equal(ops.saturation([0, 0, 0, 0]), 0);
+  t.equal(ops.saturation([0, 0, 0, 1]), 0);
   t.end();
 });
 
 test('lightness', function(t) {
-  t.equal(ops.lightness([0, 0, 0, 0]), '0%');
-  t.equal(ops.lightness([0, 0, 0, 1]), '0%');
+  t.equal(ops.lightness([0, 0, 0, 0]), 0);
+  t.equal(ops.lightness([0, 0, 0, 1]), 0);
   t.end();
 });
 

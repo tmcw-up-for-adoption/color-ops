@@ -1,5 +1,7 @@
 # color-ops
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tmcw/color-ops.svg)](https://greenkeeper.io/)
+
 [![build status](https://secure.travis-ci.org/mapbox/color-ops.png)](http://travis-ci.org/mapbox/color-ops)
 
 simple color operations
